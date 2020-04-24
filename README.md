@@ -43,7 +43,6 @@ $ pip install requests python-dateutil smartypants bs4
 ## TODO
 
 *   Verify the user input to actually be a valid story URL (regex).
-*   If `modifyDate` is stored into the epub, and if it is possible to rewrte existing epubs (not currently possible with epubbuilder), then only modified portions of stories could be redownloaded.
 *   Slow down downloads to comply with the requirement that "any automated system [...] that accesses the Website in a manner that sends more request messages to the Wattpad.com servers in a given period of time than a human can reasonably produce in the same period by using a conventional on-line web browser" from the [terms of service](http://www.wattpad.com/terms).
     -   That said, this probably violates the rest of the ToS everywhere else, but may as well be nice and not thrash sites with fast downloads.
 *   Actually do error checking on API responses
