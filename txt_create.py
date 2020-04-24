@@ -1,17 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import save_file
 from bs4 import BeautifulSoup
 
