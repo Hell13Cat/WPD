@@ -7,7 +7,7 @@ import re
 import requests
 import dateutil.parser
 import smartypants
-import save_file, html_create, fb2_create, txt_create
+import save_file, html_create, fb2_create, txt_create, ex
 
 
 session = requests.session()
@@ -95,6 +95,7 @@ def download_story(story_id):
 
 
 def get_story_id(url):
+    url = ex.redirect_get(url)
     match = re.search(r'\d+', url)
     if not match:
         return None

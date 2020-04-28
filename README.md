@@ -11,7 +11,7 @@ Please use this for personal use only.
 List one or more story or chapter URLs as command line arguments.
 
 ```
-$ python3 scrape.py http://www.wattpad.com/story/9876543-example-story http://www.wattpad.com/story/9999999-example-story-2
+$ python3 scrape.py http://www.wattpad.com/story/9876543-example-story http://www.wattpad.com/story/9999999-example-story-2 https://my.w.tt/ShortLinkExample
 ```
 
 Or feed it a list of URLs, one per line, via standard input.
