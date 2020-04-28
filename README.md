@@ -20,8 +20,6 @@ Or feed it a list of URLs, one per line, via standard input.
 $ python3 scrape.py < list_of_story_urls.txt
 ```
 
-You may convert the epub to a mobi file with `kindlegen` or similar tools if desired.
-
 ## Details
 
 This uses documented and undocumented portions of the Wattpad API. The undocumented portions of the API allow downloading story text, which conceivably could break in the future.
