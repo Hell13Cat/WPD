@@ -1,8 +1,8 @@
-# Wattpad txt scraper
+# Wattpad txt or fb2 scraper
 
 Based on [Wattpad Epub Scraper](https://github.com/de3sw2aq1/wattpad-ebook-scraper)
 
-Scrape Wattpad stories into several txt files and images files for offline reading.
+Scrape Wattpad stories into several txt files and images files or fb2 for offline reading.
 
 Please use this for personal use only.
 
@@ -20,6 +20,12 @@ Or feed it a list of URLs, one per line, via standard input.
 $ python3 scrape.py < list_of_story_urls.txt
 ```
 
+If you need to download all the books from the reading list
+
+```
+$ python3 getlist.py https://www.wattpad.com/list/882495357-list-link
+```
+
 ## Details
 
 This uses documented and undocumented portions of the Wattpad API. The undocumented portions of the API allow downloading story text, which conceivably could break in the future.
@@ -35,7 +41,7 @@ Depends on [requests](http://python-requests.org), [python-dateutil](http://labi
 Install them with `pip`:
 
 ```
-$ pip install requests python-dateutil smartypants bs4
+$ pip install requests python-dateutil smartypants bs4 cfscrape
 ```
 
 ## TODO

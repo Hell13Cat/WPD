@@ -13,28 +13,32 @@ def rename_valid(text):
 def rename_valid_f(text):
     char_del = '''/\:|*"?+!><.@%'''
     for num in range(len(char_del)):
-        text = text.replace(char_del[num], "")
+        text = text.replace(char_del[num], "_")
     text = text.replace("\n", "")
     return text
 
 def dirs_create(name):
     root_dir = os.getcwd()
     try:
-        os.mkdir(root_dir + "/" + rename_valid_f(name))
+        os.mkdir(root_dir + "/downloads")
     except:
         aa = 0
     try:
-        os.mkdir(root_dir + "/" + rename_valid_f(name) + "/img")
+        os.mkdir(root_dir + "/downloads/" + rename_valid_f(name))
     except:
         aa = 0
     try:
-        os.mkdir(root_dir + "/" + rename_valid_f(name) + "/chapters")
+        os.mkdir(root_dir + "/downloads/" + rename_valid_f(name) + "/img")
+    except:
+        aa = 0
+    try:
+        os.mkdir(root_dir + "/downloads/" + rename_valid_f(name) + "/chapters")
     except:
         aa = 0
 
 def file_name(story, name):
     root_dir = os.getcwd()
-    return root_dir + "/" + rename_valid_f(story) + "/img/" + rename_valid(name)
+    return root_dir + "/downloads/" + rename_valid_f(story) + "/img/" + rename_valid(name)
 
 def save_url_name(names, story, urldown):
     dirs_create(story)
@@ -52,14 +56,14 @@ def save_bytes(story, name, bit):
 def save_txt(story, name, text):
     dirs_create(story)
     root_dir = os.getcwd()
-    file = open(root_dir + "/" + rename_valid_f(story) + "/chapters/" + rename_valid(name), "w")
+    file = open(root_dir + "/downloads/" + rename_valid_f(story) + "/chapters/" + rename_valid(name), "w")
     file.write(text)
     file.close()
 
 def save_txt_info(story, text):
     dirs_create(story)
     root_dir = os.getcwd()
-    file = open(root_dir + "/" + rename_valid_f(story) + "/info.txt", "w")
+    file = open(root_dir + "/downloads/" + rename_valid_f(story) + "/info.txt", "w")
     file.write(text)
     file.close()
 

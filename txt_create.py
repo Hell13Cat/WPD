@@ -21,7 +21,7 @@ def templ_ch():
 def m(book):
     print("[I] Saving in txt...")
     info_book = templ_main().format(book["title"], book["authors"], book["description"], book["source"])
-    save_file.save_txt_info(book["title"], info_book)
+    save_file.save_txt_info(book["id"] + " - " + book["title"], info_book)
     chapters = book["characters"]
     chapter_count = 0
     for capter in chapters:
@@ -35,12 +35,12 @@ def m(book):
         tags = soup.find_all('img', src=True)
         for ii in range(len(tags)):
             img_tag_url = (tags[ii])["src"]
-            save_file.save_url_name("#" + str(chapter_count) + "~" + str(ii + 1) + ".jpg",  book["title"], img_tag_url)
+            save_file.save_url_name("#" + str(chapter_count) + "~" + str(ii + 1) + ".jpg", book["id"] + " - " + book["title"], img_tag_url)
             img_tag = soup.select_one("img:nth-of-type(1)")
             img_tag.decompose()
         tags = soup.find_all("p")
         for tag in tags:
             chapter_add = "\n\n" + tag.text
             chapter_text += chapter_add
-        save_file.save_txt(book["title"],"#" + str(chapter_count) + " " + title + ".txt", templ_ch().format(book["title"], chapter_text))
+        save_file.save_txt(book["id"] + " - " + book["title"], "#" + str(chapter_count) + " " + title + ".txt", templ_ch().format(book["title"], chapter_text))
     print("[I] Saved to txt")

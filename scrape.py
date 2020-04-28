@@ -21,7 +21,7 @@ categories = session.get(API_GETCATEGORIES).json()
 categories = {int(k): v for k, v in categories.items()}
 
 
-def download_story(story_id):
+def download_story(story_id, type_save):
     storyinfo = session.get(API_STORYINFO + story_id, params={'drafts': 1, 'include_deleted': 1}).json()
     story_title = storyinfo['title']
     story_description = storyinfo['description']
@@ -31,13 +31,15 @@ def download_story(story_id):
     story_categories = [categories[c] for c in storyinfo['categories'] if c in categories]
     story_rating = storyinfo['rating'] # TODO: I think 4 is adult?
     story_cover = session.get(storyinfo['cover']).content
-    save_file.save_bytes(story_title, "cover.jpg", story_cover)
+    if type_save == "txt":
+        save_file.save_bytes(str(story_id) + " - " + story_title, "cover.jpg", story_cover)
     story_url = storyinfo['url']
 
     print('[I] Story "{story_title}": {story_id}'.format(story_title=story_title, story_id=story_id))
 
     book = {}
     book["title"] = story_title
+    book["id"] = story_id
     book["authors"] = story_author
     book["categories"] = story_categories
     book["description"] = story_description
@@ -45,7 +47,7 @@ def download_story(story_id):
     book["'publisher"] = "Wattpad Downloader"
     book["source"] = story_url
     book["rating"] = story_rating
-  
+    book["cover"] = storyinfo["cover"]  
     characters = []
     countsp = 0
     countspa = len(storyinfo["parts"])
@@ -77,20 +79,14 @@ def download_story(story_id):
         section["id"] = chapter_id
         characters.append(section)
     book["characters"] = characters
-    print("[?] What format to save the book(html, fb2, txt)?")
-    while True == True:
-        type_save = input("[>")
-        if type_save == "html":
-            html_create.m(book)
-            break
-        elif type_save == "fb2":
-            fb2_create.m(book)
-            break
-        elif type_save == "txt":
-            txt_create.m(book)
-            break
-        else:
-            aa = 0
+    if type_save == "html":
+        html_create.m(book)
+    elif type_save == "fb2":
+        fb2_create.m(book)
+    elif type_save == "txt":
+        txt_create.m(book)
+    else:
+        aa = 0
     
 
 
@@ -114,15 +110,29 @@ def get_story_id(url):
 
 
 def main():
+    print("[?] What format to save the book(html, fb2, txt)?")
+    while True == True:
+        type_save = input("[>")
+        if type_save == "html":
+            aa = 0
+            break
+        elif type_save == "fb2":
+            aa = 0
+            break
+        elif type_save == "txt":
+            aa = 0
+            break
+        else:
+            aa = 0
+    
     if sys.argv[1:]:
         story_urls = sys.argv[1:]
     else:
         story_urls = sys.stdin
-
     for story_url in story_urls:
         story_id = get_story_id(story_url)
         if story_id:
-            download_story(story_id)
+            download_story(story_id, type_save)
         else:
             print('ERROR: could not retrieve story', story_url)
 
