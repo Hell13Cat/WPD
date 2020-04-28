@@ -23,7 +23,7 @@ $ python3 scrape.py < list_of_story_urls.txt
 If you need to download all the books from the reading list
 
 ```
-$ python3 getlist.py https://www.wattpad.com/list/882495357-list-link
+$ python3 getall.py https://www.wattpad.com/list/882495357-list-link
 ```
 
 ## Details
