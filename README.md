@@ -17,7 +17,7 @@ $ python3 scrape.py [fb2/txt] http://www.wattpad.com/story/9876543-example-story
 If you need to download all the books from the reading list
 
 ```
-$ python3 getall.py list https://www.wattpad.com/list/882495357-list-link
+$ python3 getall.py list https://www.wattpad.com/list/882495357-list-link https://my.w.tt/ShortLinkExample
 ```
 
 [Not stable] To save all lists from a profile
