@@ -23,7 +23,7 @@ $ python3 getall.py list https://www.wattpad.com/list/882495357-list-link
 [Not stable] To save all lists from a profile
 
 ```
-$ python3 getall.py profile https://www.wattpad.com/list/882495357-list-link
+$ python3 getall.py profile Nickname
 ```
 
 ## Details
