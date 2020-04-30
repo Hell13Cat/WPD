@@ -42,5 +42,5 @@ def m(book):
         for tag in tags:
             chapter_add = "\n\n" + tag.text
             chapter_text += chapter_add
-        save_file.save_txt(book["id"] + " - " + book["title"], "#" + str(chapter_count) + " " + title + ".txt", templ_ch().format(book["title"], chapter_text))
+        save_file.save_txt(book["id"] + " - " + book["title"], "#" + str(chapter_count) + " " + title + ".txt", templ_ch().format(capter["title"], chapter_text))
     print("[I] Saved to txt")

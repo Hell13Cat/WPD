@@ -81,7 +81,7 @@ def download_story(story_id, type_save):
     book["characters"] = characters
     if type_save == "html":
         html_create.m(book)
-    elif type_save == "fb2":
+    elif type_save == "fb2": 
         fb2_create.m(book)
     elif type_save == "txt":
         txt_create.m(book)
@@ -109,30 +109,12 @@ def get_story_id(url):
     return story_id
 
 
-def main():
-    print("[?] What format to save the book(html, fb2, txt)?")
-    while True == True:
-        type_save = input("[>")
-        if type_save == "html":
-            aa = 0
-            break
-        elif type_save == "fb2":
-            aa = 0
-            break
-        elif type_save == "txt":
-            aa = 0
-            break
-        else:
-            aa = 0
-    
-    if sys.argv[1:]:
-        story_urls = sys.argv[1:]
-    else:
-        story_urls = sys.stdin
+def main():    
+    story_urls = sys.argv[2:]
     for story_url in story_urls:
         story_id = get_story_id(story_url)
         if story_id:
-            download_story(story_id, type_save)
+            download_story(story_id, sys.argv[1])
         else:
             print('ERROR: could not retrieve story', story_url)
 

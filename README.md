@@ -11,19 +11,19 @@ Please use this for personal use only.
 List one or more story or chapter URLs as command line arguments.
 
 ```
-$ python3 scrape.py http://www.wattpad.com/story/9876543-example-story http://www.wattpad.com/story/9999999-example-story-2 https://my.w.tt/ShortLinkExample
-```
-
-Or feed it a list of URLs, one per line, via standard input.
-
-```
-$ python3 scrape.py < list_of_story_urls.txt
+$ python3 scrape.py [fb2/txt] http://www.wattpad.com/story/9876543-example-story http://www.wattpad.com/story/9999999-example-story-2 https://my.w.tt/ShortLinkExample
 ```
 
 If you need to download all the books from the reading list
 
 ```
-$ python3 getall.py https://www.wattpad.com/list/882495357-list-link
+$ python3 getall.py list https://www.wattpad.com/list/882495357-list-link
+```
+
+[Not stable] To save all lists from a profile
+
+```
+$ python3 getall.py profile https://www.wattpad.com/list/882495357-list-link
 ```
 
 ## Details
@@ -32,11 +32,7 @@ This uses documented and undocumented portions of the Wattpad API. The undocumen
 
 The story details API call is also undocumented and is from the internal v3 API used by the Android app. This would be a very useful API call to make public.
 
-The chapters are assembled into an epub with epubbuilder, but nothing is really done to clean up the HTML. Epub files are supposed to be fully valid XHTML.
-
 ## Dependencies
-
-Depends on [requests](http://python-requests.org), [python-dateutil](http://labix.org/python-dateutil) and [smartypants](https://pypi.python.org/pypi/smartypants/).
 
 Install them with `pip`:
 
