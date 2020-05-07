@@ -1,5 +1,7 @@
 # Wattpad txt or fb2 scraper
 
+[Russian instruction - Русская инструкция](https://github.com/Hell13Cat/WPD/blob/master/README-ru.md)
+
 Based on [Wattpad Epub Scraper](https://github.com/de3sw2aq1/wattpad-ebook-scraper)
 
 Scrape Wattpad stories into several txt files and images files or fb2 for offline reading.
