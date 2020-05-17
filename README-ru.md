@@ -37,7 +37,7 @@ $ python3 getall.py profile https://www.wattpad.com/list/882495357-list-link
 Установите их с помощью `pip`:
 
 ```
-$ pip install requests python-dateutil smartypants bs4 cfscrape
+$ pip install requests python-dateutil smartypants bs4 cfscrape colorama
 ```
 
 ## TODO

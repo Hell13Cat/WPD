@@ -3,6 +3,7 @@ import os
 from bs4 import BeautifulSoup
 import requests
 import save_file
+from ex import p_red, p_green, p_blue
 
 def templ_char():
     return '''<title><p>{title}</p></title>
@@ -64,12 +65,12 @@ def chapter_gen(text):
 
 
 def m(book):
+    p_green("[I] Saving in fb2...")
     root_dir = os.getcwd()
     try:
         os.mkdir(root_dir + "/downloads")
     except:
         aa = 0
-    print("[I] Saving to fb2...")
     chapters = book["characters"]
     binary = ""
     chapters_text = ""
@@ -80,9 +81,9 @@ def m(book):
          capt = chapter_gen(chapter["text"])
          chapters_text += templ_char().format(title=chapter["title"], text=capt["text"])
          binary += capt["image"]
-    print('[{c_all}/{c_all}] Meta and information generation'.format(c_all=str(len(chapters) + 1)))
+    p_green('[{c_all}/{c_all}] Meta and information generation'.format(c_all=str(len(chapters) + 1)))
     ready_book = templ().format(link=book["source"], namebook=book["title"], annotation=book["description"], nickname=str(book["authors"]), characters=chapters_text, binarys=binary, cover=base64_get(book["cover"]))
     file = open(root_dir + "/downloads/" + str(book["id"]) + " - " + save_file.rename_valid_f(book["title"]) + ".fb2", "w")
     file.write(ready_book)
     file.close()
-    print("[I] Saved to fb2")
+    p_green("[I] Saved to fb2")

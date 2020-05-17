@@ -1,5 +1,6 @@
 import save_file
 from bs4 import BeautifulSoup
+from ex import p_red, p_green, p_blue
 
 def templ_main():
     return '''+->
@@ -19,7 +20,7 @@ def templ_ch():
 {}'''
 
 def m(book):
-    print("[I] Saving in txt...")
+    p_green("[I] Saving in txt...")
     info_book = templ_main().format(book["title"], book["authors"], book["description"], book["source"])
     save_file.save_txt_info(book["id"] + " - " + book["title"], info_book)
     chapters = book["characters"]
@@ -43,4 +44,4 @@ def m(book):
             chapter_add = "\n\n" + tag.text
             chapter_text += chapter_add
         save_file.save_txt(book["id"] + " - " + book["title"], "#" + str(chapter_count) + " " + title + ".txt", templ_ch().format(capter["title"], chapter_text))
-    print("[I] Saved to txt")
+    p_green("[I] Saved to txt")

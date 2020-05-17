@@ -1,5 +1,6 @@
 import requests as req
 import cfscrape
+from colorama import Fore, Back, Style, init
 
 def files(setting, filen):
 	file = open(os.getcwd() + "/data/" + filen, "wb")
@@ -37,3 +38,16 @@ def redirect_get(url):
         else:
             url = a[1]
     return red_url
+
+def p_red(text): 
+    init(autoreset=True)
+    print(Back.RED + text)
+
+def p_green(text): 
+    init(autoreset=True)
+    print(Back.GREEN + text)
+
+def p_blue(text): 
+    init(autoreset=True)
+    print(Back.BLUE + text)
+

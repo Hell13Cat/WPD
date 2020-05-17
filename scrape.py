@@ -7,8 +7,8 @@ import re
 import requests
 import dateutil.parser
 import smartypants
-import save_file, html_create, fb2_create, txt_create, ex
-
+import save_file, fb2_create, txt_create, ex
+from ex import p_red, p_green, p_blue
 
 session = requests.session()
 session.headers['User-Agent'] = ''
@@ -35,7 +35,7 @@ def download_story(story_id, type_save):
         save_file.save_bytes(str(story_id) + " - " + story_title, "cover.jpg", story_cover)
     story_url = storyinfo['url']
 
-    print('[I] Story "{story_title}": {story_id}'.format(story_title=story_title, story_id=story_id))
+    p_green('[I] Story "{story_title}": {story_id}'.format(story_title=story_title, story_id=story_id))
 
     book = {}
     book["title"] = story_title
@@ -56,11 +56,11 @@ def download_story(story_id, type_save):
         chapter_title = part['title']
 
         if part['draft']:
-            print('[{c_num}/{c_all}] Skipping "{chapter_title}": {chapter_id}, part is draft'.format(c_num=countsp, c_all=countspa, chapter_title=chapter_title, chapter_id=chapter_id))
+            p_red('[{c_num}/{c_all}] Skipping "{chapter_title}": {chapter_id}, part is draft'.format(c_num=countsp, c_all=countspa, chapter_title=chapter_title, chapter_id=chapter_id))
             continue
 
         if 'deleted' in part and part['deleted']:
-            print('[{c_num}/{c_all}] Skipping "{chapter_title}": {chapter_id}, part is deleted'.format(c_num=countsp, c_all=countspa, chapter_title=chapter_title, chapter_id=chapter_id))
+            p_red('[{c_num}/{c_all}] Skipping "{chapter_title}": {chapter_id}, part is deleted'.format(c_num=countsp, c_all=countspa, chapter_title=chapter_title, chapter_id=chapter_id))
             continue
 
         chapter_id = part['id']
@@ -79,9 +79,7 @@ def download_story(story_id, type_save):
         section["id"] = chapter_id
         characters.append(section)
     book["characters"] = characters
-    if type_save == "html":
-        html_create.m(book)
-    elif type_save == "fb2": 
+    if type_save == "fb2": 
         fb2_create.m(book)
     elif type_save == "txt":
         txt_create.m(book)
@@ -116,7 +114,7 @@ def main():
         if story_id:
             download_story(story_id, sys.argv[1])
         else:
-            print('ERROR: could not retrieve story', story_url)
+            p_red('ERROR: could not retrieve story', story_url)
 
 
 if __name__ == '__main__':

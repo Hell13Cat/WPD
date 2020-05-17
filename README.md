@@ -39,7 +39,7 @@ The story details API call is also undocumented and is from the internal v3 API 
 Install them with `pip`:
 
 ```
-$ pip install requests python-dateutil smartypants bs4 cfscrape
+$ pip install requests python-dateutil smartypants bs4 cfscrape colorama
 ```
 
 ## TODO

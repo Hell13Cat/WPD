@@ -8,6 +8,7 @@ import re
 import shutil
 import save_file
 import requests
+from ex import p_red, p_green, p_blue
 
 def get_session():
     session = req.Session()
@@ -38,7 +39,7 @@ def create_list(list_url, type_save):
     url_id = match.group()
     tags = soup.find_all("h1")
     list_name = (tags[0]).text
-    print("[I] " + (tags[0]).text + " list")
+    p_green("[I] " + (tags[0]).text + " list")
     tags = soup.find_all("a", href=True)
     for tag in tags:
         if (("on-navigate" and "story/") in str(tag)) and ("img" not in str(tag)):
@@ -49,9 +50,9 @@ def create_list(list_url, type_save):
             id_list.append(url_id)
             storys_url += add_url
             print("[" + str(count_url) + "] " + tag.text + " added to list. Url: https://www.wattpad.com" + tag["href"])
-    print("[I] Redirect to download script")
+    p_green("[I] Redirect to download script")
     os.system("python scrape.py "+ type_save + " " + storys_url)
-    print("[I] Directory Organization...")
+    p_green("[I] Directory Organization...")
     try:
         os.mkdir(os.getcwd() + "/downloads")
     except:
@@ -80,12 +81,12 @@ def create_list(list_url, type_save):
         os.rename("downloads_temp","downloads")
     except:
         aa = 00
-    print("[I] List Folder Ready")
-    print("[I] " + list_name + " downloaded")
+    p_green("[I] List Folder Ready")
+    p_green("[I] " + list_name + " downloaded")
 
 
 def create_profile(nickname, type_save):
-    print ("[I] Reading lists from " + nickname + " are added to the queue...")
+    p_green("[I] Reading lists from " + nickname + " are added to the queue...")
     session = requests.session()
     session.headers['User-Agent'] = ''
     lists_url = 'https://www.wattpad.com/api/v3/users/{nickname}/lists?limit=100'
@@ -100,11 +101,11 @@ def create_profile(nickname, type_save):
         list_url_ready.append("https://www.wattpad.com/list/" + str(list_one["id"]))
     for down_url in list_url_ready:
         create_list(down_url, type_save)
-    print ("[I] All reading lists saved")
+    p_green("[I] All reading lists saved")
     
 
 def main():
-    print("[?] What format to save the book(fb2, txt)?")
+    p_blue("[?] What format to save the book(fb2, txt)?")
     while True == True:
         type_save = input("[>")
         if type_save == "fb2":
