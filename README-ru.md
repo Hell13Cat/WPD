@@ -1,5 +1,7 @@
 # Wattpad TXT или FB2 загрузчик
 
+[English instruction - Английская инструкция](https://github.com/Hell13Cat/WPD/blob/master/README.md)
+
 Основано на [Wattpad Epub Scraper](https://github.com/de3sw2aq1/wattpad-ebook-scraper)
 
 Скопируйте истории Wattpad в несколько текстовых файлов и файлов изображений или fb2 для чтения в автономном режиме.
